@@ -7,18 +7,19 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    setToDos((prev) => {
-      return [
-        ...prev,
-        {
-          id: crypto.randomUUID(),
-          title: newItem,
-          completed: false,
-        },
-      ];
-    });
-    setNewItem("");
+    if (newItem.length > 0) {
+      setToDos((prev) => {
+        return [
+          ...prev,
+          {
+            id: crypto.randomUUID(),
+            title: newItem,
+            completed: false,
+          },
+        ];
+      });
+      setNewItem("");
+    }
   }
 
   function toggleTodo(id, completed) {
